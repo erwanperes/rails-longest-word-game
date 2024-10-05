@@ -1,0 +1,28 @@
+<div class="row pt-4">
+  <h1>New game</h1>
+  <p>Your current score is: <%= session[:score] %></p>
+</div>
+<div class="row pt-4">
+  <div class="col">
+    <%
+    @letters.each do |letter|
+    %>
+      <span class="letter-card"><%= letter %></span>
+    <%
+    end
+    %>
+  </div>
+</div>
+<div class="row pt-4">
+  <div class="col-4">
+    <p class="h4">What is the longest word you can find ?</p>
+   <form class="d-inline" action="/score" method="post" data-turbo="false">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+    <div class="input-group">
+      <input name="word" value="" type="text" class="form-control mb-0" placeholder="Your word" aria-label="word" aria-describedby="button-addon2">
+      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Play</button>
+    </div>
+  </form>
+  </div>
+</div>

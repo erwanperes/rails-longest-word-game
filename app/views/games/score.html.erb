@@ -1,0 +1,25 @@
+<div class="row pt-4">
+  <h1>Result</h1>
+  <p>Your current score is: <%= session[:score] %></p>
+</div>
+<div class="row">
+	<div class="col">
+		<% if @message %>
+			<% if @message[:option] == 1 %>
+			<div class="alert alert-danger" role="alert">
+			  <p>Sorry but <strong><%= @message[:word] %></strong> can't be built out of <%= @message[:grid] %></p>
+			</div>
+			<% elsif @message[:option] == 2 %>
+			<div class="alert alert-danger" role="alert">
+			  <p>Sorry but <strong><%= @message[:word] %></strong> not seem to be a valid english word...</p>
+			</div>
+			<% elsif @message[:option] == 3 %>
+			<div class="alert alert-success" role="alert">
+			  <p><strong>Congratulations!</strong> <%= @message[:word] %> is a valid english word...</p>
+			</div>
+			<% end %>
+		<% end %>
+		<p><%= link_to "Play again", new_path %></p>
+	</div>
+</div>
+
